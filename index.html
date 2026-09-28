@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guía del Técnico en Mantenimiento Preventivo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:#1e3a8a;
+--secondary:#2563eb;
+--dark:#0f172a;
+--background:#f4f6f9;
+--text:#334155;
+--white:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--background);
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+animation:fadeInBody 1s ease;
+}
+
+/* ANIMACIONES */
+
+@keyframes fadeInBody{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+@keyframes slideUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes heroZoom{
+from{
+opacity:0;
+transform:scale(.97);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(
+135deg,
+#0f172a,
+#1e3a8a,
+#2563eb
+);
+
+color:white;
+text-align:center;
+padding:100px 20px 80px;
+
+box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+animation:heroZoom 1s ease;
+}
+
+.autor{
+font-size:1rem;
+font-weight:600;
+letter-spacing:3px;
+margin-bottom:15px;
+}
+
+header h1{
+font-size:3.2rem;
+font-weight:800;
+margin-bottom:15px;
+}
+
+header p{
+font-size:1.1rem;
+max-width:800px;
+margin:auto;
+}
+
+.badge{
+display:inline-block;
+margin-top:20px;
+
+background:white;
+color:var(--primary);
+
+padding:12px 22px;
+border-radius:30px;
+
+font-weight:700;
+
+box-shadow:
+0 10px 20px rgba(0,0,0,.15);
+}
+
+/* CONTENEDOR */
+
+.container{
+width:min(92%,1200px);
+margin:auto;
+padding:40px 0;
+}
+
+/* SECCIONES */
+
+.section{
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+margin-bottom:30px;
+
+box-shadow:
+0 5px 15px rgba(0,0,0,.05),
+0 15px 35px rgba(0,0,0,.03);
+
+animation:slideUp .8s ease;
+
+transition:.3s;
+}
+
+.section:hover{
+transform:translateY(-3px);
+}
+
+.section h2{
+font-size:1.7rem;
+color:var(--primary);
+
+margin-bottom:20px;
+
+padding-left:15px;
+
+border-left:6px solid var(--secondary);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+/* TARJETAS */
+
+.card{
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+border-top:5px solid var(--secondary);
+
+box-shadow:
+0 5px 12px rgba(0,0,0,.05);
+
+transition:.3s;
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+0 15px 25px rgba(37,99,235,.18);
+}
+
+.card h3{
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.icon{
+font-size:2rem;
+margin-bottom:12px;
+}
+
+/* TABLAS */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+overflow:hidden;
+}
+
+table th{
+background:var(--primary);
+color:white;
+padding:15px;
+}
+
+table td{
+padding:15px;
+border:1px solid #ddd;
+}
+
+table tr:nth-child(even){
+background:#f8fafc;
+}
+
+table tr:hover{
+background:#eef4ff;
+}
+
+/* DESTACADOS */
+
+.highlight{
+
+background:linear-gradient(
+135deg,
+#dbeafe,
+#eff6ff
+);
+
+padding:20px;
+
+border-left:6px solid var(--secondary);
+
+border-radius:12px;
+
+margin-top:20px;
+}
+
+/* DICCIONARIO */
+
+.tech{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+
+margin-top:20px;
+}
+
+.tech div{
+
+background:linear-gradient(
+145deg,
+#f8fafc,
+#e8f0ff
+);
+
+padding:18px;
+
+border-radius:12px;
+
+text-align:center;
+
+transition:.3s;
+}
+
+.tech div:hover{
+transform:scale(1.03);
+}
+
+.tech strong{
+display:block;
+font-size:1.1rem;
+color:var(--primary);
+margin-bottom:8px;
+}
+
+/* PASOS */
+
+.steps{
+counter-reset:step;
+}
+
+.steps li{
+
+list-style:none;
+
+position:relative;
+
+padding-left:65px;
+
+margin-bottom:20px;
+}
+
+.steps li::before{
+
+counter-increment:step;
+
+content:counter(step);
+
+position:absolute;
+left:0;
+
+width:42px;
+height:42px;
+
+background:var(--secondary);
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:white;
+font-weight:bold;
+}
+
+/* FOOTER */
+
+footer{
+
+background:var(--dark);
+
+color:white;
+
+text-align:center;
+
+padding:50px 20px;
+
+margin-top:40px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+header{
+padding:70px 20px 60px;
+}
+
+header h1{
+font-size:2.2rem;
+line-height:1.2;
+}
+
+header p{
+font-size:.95rem;
+}
+
+.section{
+padding:22px;
+}
+
+.section h2{
+font-size:1.3rem;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.tech{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:480px){
+
+header h1{
+font-size:1.8rem;
+}
+
+.tech{
+grid-template-columns:1fr;
+}
+
+.section{
+padding:18px;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+
+<div class="autor">
+CREADO POR: <strong>JALIBER ELVIRA</strong>
+</div>
+
+<h1>🖥️ MANTENIMIENTO PREVENTIVO</h1>
+
+<p>
+Guía del Técnico en Soporte y Mantenimiento Informático
+</p>
+
+<div class="badge">
+Material Educativo para Estudiantes de Informática
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="section">
+
+<h2>🎯 ¿Qué es el Mantenimiento Preventivo?</h2>
+
+<p>
+El mantenimiento preventivo consiste en realizar inspecciones, limpieza y verificaciones periódicas
+a una computadora para evitar fallos futuros, mejorar el rendimiento y aumentar la vida útil de los componentes.
+</p>
+
+<div class="highlight">
+✅ Incrementa la vida útil del equipo.<br>
+✅ Reduce costos de reparación.<br>
+✅ Previene daños por suciedad y temperatura.<br>
+✅ Mejora el rendimiento del hardware.<br>
+✅ Disminuye interrupciones inesperadas del servicio.
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>⏱️ Frecuencia Recomendada del Mantenimiento</h2>
+
+<table>
+
+<tr>
+<th>Tipo de Equipo o Entorno</th>
+<th>Frecuencia Recomendada</th>
+</tr>
+
+<tr>
+<td>Computadoras domésticas (hogar)</td>
+<td>Entre 8 meses y 1 año</td>
+</tr>
+
+<tr>
+<td>Equipos de oficina</td>
+<td>Entre 8 meses y 1 año</td>
+</tr>
+
+<tr>
+<td>Computadoras en ambientes con mucho polvo</td>
+<td>Cada 6 meses</td>
+</tr>
+
+<tr>
+<td>Computadoras Gamer</td>
+<td>Cada 6 meses</td>
+</tr>
+
+<tr>
+<td>Estaciones de trabajo (Workstations)</td>
+<td>Cada 6 meses</td>
+</tr>
+
+<tr>
+<td>Laboratorios educativos</td>
+<td>Cada 6 meses</td>
+</tr>
+
+</table>
+
+<div class="highlight">
+💡 Los hogares y oficinas suelen requerir mantenimiento con menor frecuencia debido a la menor exposición al polvo y a cargas de trabajo moderadas. Los equipos Gamer y las estaciones de trabajo generan más calor y trabajan durante más tiempo, por lo que requieren inspecciones y limpieza cada 6 meses.
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>🧩 Componentes Principales de una Computadora</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🧠 CPU</h3>
+Procesador que ejecuta instrucciones y coordina todas las operaciones del equipo.
+</div>
+
+<div class="card">
+<h3>⚡ RAM</h3>
+Memoria temporal utilizada mientras los programas y el sistema operativo están funcionando.
+</div>
+
+<div class="card">
+<h3>💾 HDD</h3>
+Unidad de almacenamiento mecánica que utiliza discos magnéticos.
+</div>
+
+<div class="card">
+<h3>🚀 SSD</h3>
+Unidad de almacenamiento de estado sólido con alta velocidad de lectura y escritura.
+</div>
+
+<div class="card">
+<h3>🎮 GPU</h3>
+Procesador especializado en gráficos, videojuegos y procesamiento visual.
+</div>
+
+<div class="card">
+<h3>🔌 PSU</h3>
+Fuente de poder encargada de suministrar energía a todos los componentes.
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>👨‍🔧 Vestimenta Adecuada del Técnico</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">🥼</div>
+Uniforme o bata limpia.
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+Pulsera antiestática.
+</div>
+
+<div class="card">
+<div class="icon">👟</div>
+Zapatos cerrados.
+</div>
+
+<div class="card">
+<div class="icon">🛡️</div>
+Lentes de seguridad.
+</div>
+
+<div class="card">
+<div class="icon">📋</div>
+Área de trabajo ordenada.
+</div>
+
+<div class="card">
+<div class="icon">🧹</div>
+Espacio libre de líquidos y alimentos.
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>🧰 Insumos y Herramientas de Trabajo</h2>
+
+<div class="grid">
+
+<div class="card">🧴 Espuma limpiadora</div>
+
+<div class="card">⚡ Limpiador de contactos</div>
+
+<div class="card">💨 Aire comprimido</div>
+
+<div class="card">🧹 Huaipe</div>
+
+<div class="card">🔧 Destornilladores</div>
+
+<div class="card">⚡ Pulsera antiestática</div>
+
+<div class="card">🧪 Alcohol isopropílico</div>
+
+<div class="card">🖌️ Brocha antiestática</div>
+
+<div class="card">🧽 Borrador blanco</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>📖 Diccionario Técnico del Soporte Informático</h2>
+
+<div class="tech">
+
+<div>
+<strong>AC</strong>
+Corriente Alterna
+</div>
+
+<div>
+<strong>DC</strong>
+Corriente Continua
+</div>
+
+<div>
+<strong>RAM</strong>
+Random Access Memory
+</div>
+
+<div>
+<strong>CPU</strong>
+Central Processing Unit
+</div>
+
+<div>
+<strong>GPU</strong>
+Graphics Processing Unit
+</div>
+
+<div>
+<strong>HDD</strong>
+Hard Disk Drive
+</div>
+
+<div>
+<strong>ESD</strong>
+Electrostatic Discharge
+</div>
+
+<div>
+<strong>EMI</strong>
+Interferencia Electromagnética
+</div>
+
+<div>
+<strong>PSU</strong>
+Power Supply Unit
+</div>
+
+<div>
+<strong>BIOS</strong>
+Basic Input/Output System
+</div>
+
+<div>
+<strong>UEFI</strong>
+Unified Extensible Firmware Interface
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>⚙️ Conceptos Técnicos Importantes</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>⚡ AC y DC</h3>
+La PSU convierte la corriente alterna (AC) proveniente del tomacorriente en corriente continua (DC), utilizada por los componentes internos.
+</div>
+
+<div class="card">
+<h3>⚠️ ESD</h3>
+Una descarga electrostática puede dañar componentes electrónicos sin dejar evidencia visible.
+</div>
+
+<div class="card">
+<h3>🖥️ BIOS y UEFI</h3>
+Son sistemas encargados de iniciar el hardware y permitir el arranque del sistema operativo.
+</div>
+
+<div class="card">
+<h3>📡 EMI</h3>
+La interferencia electromagnética puede afectar dispositivos electrónicos cercanos.
+</div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>🔄 Procedimiento Básico de Mantenimiento</h2>
+
+<ol class="steps">
+
+<li>Apagar correctamente la computadora.</li>
+
+<li>Desconectar la alimentación eléctrica.</li>
+
+<li>Colocar la pulsera antiestática.</li>
+
+<li>Abrir el gabinete o carcasa.</li>
+
+<li>Inspeccionar el estado general de los componentes.</li>
+
+<li>Eliminar el polvo utilizando aire comprimido y brocha.</li>
+
+<li>Limpiar contactos cuando sea necesario.</li>
+
+<li>Verificar conexiones internas.</li>
+
+<li>Ensamblar nuevamente todos los componentes.</li>
+
+<li>Encender y realizar pruebas de funcionamiento.</li>
+
+</ol>
+
+</div>
+
+<div class="section">
+
+<h2>💡 ¿Sabías Que?</h2>
+
+<div class="highlight">
+
+🔹 El polvo acumulado es una de las principales causas de sobrecalentamiento en computadoras.<br><br>
+
+🔹 Una descarga ESD imperceptible para una persona puede dañar una memoria RAM o una tarjeta madre.<br><br>
+
+🔹 Un SSD puede mejorar considerablemente los tiempos de carga del sistema operativo.<br><br>
+
+🔹 El mantenimiento preventivo es mucho más económico que reemplazar componentes dañados.<br><br>
+
+🔹 Un equipo limpio trabaja a temperaturas más estables y seguras.
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>👨‍🏫 Autor del Material</h2>
+
+<div class="highlight">
+
+<strong>Jaliber Elvira</strong><br><br>
+
+Instructor de Informática y Soporte Técnico.<br><br>
+
+Material elaborado con fines educativos para apoyar el aprendizaje sobre mantenimiento preventivo de computadoras, componentes internos, herramientas de trabajo y buenas prácticas de servicio técnico.
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<h3>🖥️ Mantenimiento Preventivo de Computadoras</h3>
+
+<p>
+Guía educativa desarrollada por <strong>Jaliber Elvira</strong>
+</p>
+
+<p>
+Soporte Técnico • Hardware • Mantenimiento Preventivo • Informática
+</p>
+
+</footer>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver((entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity = "1";
+entry.target.style.transform = "translateY(0)";
+
+}
+
+});
+
+},{
+threshold:0.15
+});
+
+sections.forEach(section => {
+
+section.style.opacity = "0";
+section.style.transform = "translateY(30px)";
+section.style.transition = "all .8s ease";
+
+observer.observe(section);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
